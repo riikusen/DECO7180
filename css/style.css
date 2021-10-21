@@ -40,7 +40,9 @@ h2 {
     color:rgb(104, 82, 165);
     font-weight: bold;
     border: rgb(130, 203, 221);
-    padding-left: 15%;
+    text-align: center;
+    /* padding-left: 50%; */
+    /* align-items: center; */
     
 }
 
@@ -272,7 +274,7 @@ h2.habitat-container {
 .container {
   position: relative;
   margin-left: 20%;
-  margin-top: 5%;
+  margin-top: 2%;
   font-family: impact, sans-serif;
   color: rgba(88, 81, 145, 1);
   font-size: 25px;
@@ -281,7 +283,7 @@ h2.habitat-container {
 .container-size {
   position: relative;
   margin-left: 20%;
-  margin-top: 10%;
+  margin-top: 5%;
   font-family: impact, sans-serif;
   color: rgba(88, 81, 145, 1);
   font-size: 25px;
@@ -290,7 +292,7 @@ h2.habitat-container {
 .container-habitat {
   position: relative;
   margin-left: 20%;
-  margin-top: 10%;
+  margin-top: 5%;
   font-family: impact, sans-serif;
   color: rgba(88, 81, 145, 1);
   font-size: 25px;
@@ -544,6 +546,7 @@ h2.habitat-container {
 
 .search {
   margin-left: 14%;
+  margin-top: -3%;
 }
 
 #img-search:hover {
@@ -551,6 +554,23 @@ h2.habitat-container {
   transition: transform .5s;
   cursor:pointer;
 
+}
+
+.fish-cards {
+  display: flex;
+  justify-content: center;
+
+  /* justify-content: space-between; */
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+
+}
+
+.card {
+  width: 20%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
 }
 
 
