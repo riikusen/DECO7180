@@ -46,12 +46,40 @@ h2 {
     
 }
 
-h3 {
-    font-family: impact, sans-serif;
-    color:rgb(104, 82, 165);
-    font-weight: bold;
+.clickable-text {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  font-family: impact, sans-serif;
+  color:rgb(104, 82, 165);
+  margin-top: 20%;
+  font-size: 50%;
+  /* margin-left: -10%; */
+}
+
+.clickable-text:hover  {
+  transform: scale(1.2); 
+  transition: transform .5s;
+  cursor:pointer;
+}
+
+.fish-name {
+  position: absolute;
+  font-family: impact, sans-serif;
+  color:rgb(104, 82, 165);
+  margin-top: 3%;
+  font-size: 70%;
 
 }
+
+/* h3 {
+  position: absolute;
+    font-family: impact, sans-serif;
+    color:rgb(104, 82, 165);
+    margin-top: 22%;
+    font-size: 70%;
+
+} */
 
 .big-fish-h2 {
     padding-left: 30%;
@@ -248,13 +276,7 @@ h2.habitat-container {
     cursor:pointer;
   }
 
-.fish-card img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5%;
-    
-}
+
 
 
 .vertical {
@@ -555,6 +577,13 @@ h2.habitat-container {
   cursor:pointer;
 
 }
+/* .fish-card img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5%;
+  
+} */
 
 .fish-cards {
   display: flex;
@@ -567,11 +596,13 @@ h2.habitat-container {
 
 }
 
-.card {
+.img-cards {
   width: 20%;
   margin-left: 2.5%;
   margin-right: 2.5%;
+  display: none;
 }
+
 
 
 

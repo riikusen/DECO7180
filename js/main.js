@@ -1,3 +1,25 @@
+// display cards
+//parameter int n, n is the number of the fishes that satifified the filter selection
+//if n is greater than the max number of cards in html, then it equeals to the max number of cards
+function displayCards(n) {
+  var index;
+  var cardsCollection= document.getElementsByClassName("card");
+  if (n > cardsCollection.length) {
+    n = cardsCollection.length;
+  }
+  for (index=0; index < n; index++) {
+    cardsCollection[index].style.display = "block";
+  }
+}
+//testing function
+displayCards(1);
+
+
+
+
+
+
+
 // Colour
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -39,6 +61,8 @@ function showSlides2(n) {
   slides2[slideIndex2-1].style.display = "block";
 }
 
+
+
 var slideIndex3 = 1;
 showSlides3(slideIndex3);
 
@@ -57,4 +81,8 @@ function showSlides3(n) {
   }
   slides3[slideIndex3-1].style.display = "block";
 }
+
+
+
+
 
