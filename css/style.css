@@ -118,19 +118,23 @@ h2 {
   /* display: none; */
   position: fixed;
   z-index: 100;
+  justify-content: center;
+  display: flex;
+  margin-top: -40%;
 }
 
 
 .popup-card {
-
   display: none;
+  justify-content: center;
 }
 
 .popup-card-img {
   width: 70%;
   z-index: 100;
-  margin-top: -20%;
+  /* margin-top: -20%; */
   position: fixed;
+  
 
 }
 
@@ -170,7 +174,7 @@ h2 {
 .description {
   position:relative;
   z-index: 800;
-  margin-top: -70%;
+  margin-top: -20%;
   margin-left: 70%;
   max-width: 400px;
   min-width: 300px;

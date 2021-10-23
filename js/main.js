@@ -38,7 +38,7 @@ var nameOnPopup = document.getElementsByClassName("popup-title");
 
 //testing arrays, delete later 
 const imgSrcs = ["./fishdex_files/back.png", "./fishdex_files/back.png", "./fishdex_files/fish.png", "./fishdex_files/fish.png"];
-const nameArr = ["A", "B", "C", "D"];
+const nameArr = ["AAAAA", "BBBBB", "CCCCC", "DDDDD"];
 const desArr = ["a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin",
 "a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin", 
 "a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin", 
