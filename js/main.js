@@ -1,13 +1,18 @@
+/////////////////information ////////////////////
+
+//tesing cards display, remove later 
 var u = document.getElementsByClassName("card");
 console.log(u);
-//testing function
 displayCards(4);
 
 
 
+
+//display all the fish cards
 function displayCards(n, namesArr, imgsArr) {
   var index;
   var cardsCollection= document.getElementsByClassName("card");
+  //tesing delete later
   const names = ["Skippet Fish", "Skipett Fish", "Skipet Fish", "Skippet Fish"];
   const imgSrcs = ["./fishdex_files/back.png", "./fishdex_files/back.png", "./fishdex_files/fish.png", "./fishdex_files/fish.png"];
   if (n > cardsCollection.length) {
@@ -20,117 +25,51 @@ function displayCards(n, namesArr, imgsArr) {
   }
 }
 
-// const imgSrcs = ["./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png"];
+
+
+
+//pop up cards
+
 var dimmer = document.getElementsByClassName("dimmer");
 var popup = document.getElementsByClassName("popup-card");
-  // const imgSrcs = ["./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png"];
+var imgOnPopup = document.getElementsByClassName("fish-img-detail");
+var description = document.getElementsByClassName("description");
+var nameOnPopup = document.getElementsByClassName("popup-title");
+
+//testing arrays, delete later 
+const imgSrcs = ["./fishdex_files/back.png", "./fishdex_files/back.png", "./fishdex_files/fish.png", "./fishdex_files/fish.png"];
+const nameArr = ["A", "B", "C", "D"];
+const desArr = ["a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin",
+"a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin", 
+"a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin", 
+"a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin", 
+"a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin"]
+
+//show cards on click
 function showFunction(n) {
   popup[n].style.display = "block";
   dimmer[n].style.display = "block";
+  imgOnPopup[n].style.display = "block";
+  imgOnPopup[n].src=imgSrcs[n];
+  description[n].style.display = "block";
+  description[n].innerHTML = desArr[n];
+  nameOnPopup[n].style.display = "block";
+  nameOnPopup[n].innerHTML = nameArr[n];
 }
 
+//hide cards on click
 function hideFunction(n) {
   popup[n].style.display = "none";
   dimmer[n].style.display = "none";
+  imgOnPopup[n].style.display = "none";
+  description[n].style.display = "none";
+  nameOnPopup[n].style.display = "none";
 }
 
 
 
 
-
-
-
-// function popupCards(n) {
-//   var i;
-//   var cardsCollection= document.getElementsByClassName("card");
-//   const names = ["Skippet Fish", "Skipett Fish", "Skipet Fish", "Skippet Fish"];
-//   const imgSrcs = ["./fishdex_files/back.png", "./fishdex_files/back.png", "./fishdex_files/fish.png", "./fishdex_files/fish.png"];
-
-//   if (n > cardsCollection.length) {
-//     n = cardsCollection.length;
-//   }
-
-//   for (i=0; i<n; i++) {
-//     var dimmerButton = document.getElementsByClassName("clickable-text");
-//     var dimmer = document.getElementsByClassName("dimmer");
-//     var exit = document.getElementsByClassName("exit");
-//     var popup = document.getElementsByClassName("popup-card");
-//     function showFunction() {
-//       popup[i].style.display = "block";
-//       popup[i-1].style.display = "none";
-//       dimmer[i].style.display = "block";
-//       dimmer[i-1].style.display = "none";
-//     }
-//     function hideFunction() {
-//       popup[i].style.display = "none";
-//       dimmer[i].style.display = "none";
-//     }
-//     dimmerButton[i].onclick = function() {showFunction()};
-//     exit[i].onclick = function() {hideFunction()};
-
-
-//   }
-
-// }
-
-
-
-// $(function(n) {
-//   n=4;
-//   var i;
-//   var cardsCollection= document.getElementsByClassName("card");
-//   const names = ["Skippet Fish", "Skipett Fish", "Skipet Fish", "Skippet Fish"];
-//   const imgSrcs = ["./fishdex_files/back.png", "./fishdex_files/back.png", "./fishdex_files/fish.png", "./fishdex_files/fish.png"];
-
-//   if (n > cardsCollection.length) {
-//     n = cardsCollection.length;
-//   }
-  
-//   for (i=0; i<n; i++) {
-
-
-//   var dimmerButton = $('.clickable-text');
-//   var dimmer = $('.dimmer');
-//   var exit = $('.exit');
-//   var popup = $('.popup-card');
-//   // var popup = document.getElementsByClassName("popup")[0];
-//   dimmerButton[i].on('click', function() {
-//     // var popup = document.getElementsByClassName("popup")[0];
-//     popup[i].show();
-//     popup[i-1].hide();
-//     dimmer[i].show();
-//     dimmer[i-1].hide();
-//   });
-//   exit[i].on('click', function() {
-//     // var popup = document.getElementsByClassName("popup")[0];
-//     // popup.classList.toggle("hide");
-//     popup[i].hide();
-//     dimmer[i].hide();
-//   });
-// }
-// });
-
-
-// function myFunction() {
-//   var popup = document.getElementsByClassName("popup")[0];
-//   popup.classList.toggle("show");
-// }
-
-const names = ["Skippet Fish", "Skipett Fish", "Skipet Fish", "Skippet Fish"];
-const imgSrcs = ["./fishdex_files/fish.png", "./fishdex_files/back.png", "./fishdex_files/fish.png", "./fishdex_files/fish.png"];
-document.getElementsByClassName("fish-img").src=imgSrcs[1];
-
-
-console.log(names);
-console.log(imgSrcs);
-
-
-
-
-
-
-
-
+//////////////////////filter ////////////////////////
 // Colour
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -150,6 +89,29 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";
 }
+
+
+
+//size
+var slideIndex3 = 1;
+showSlides3(slideIndex3);
+
+// Next/previous controls
+function plusSlides3(n) {
+  showSlides3(slideIndex3 += n);
+}
+
+function showSlides3(n) {
+  var i3;
+  var slides3 = document.getElementsByClassName("mySlides3");
+  if (n > slides3.length) {slideIndex3 = 1}
+  if (n < 1) {slideIndex3 = slides3.length}
+  for (i3 = 0; i3 < slides3.length; i3++) {
+    slides3[i3].style.display = "none";
+  }
+  slides3[slideIndex3-1].style.display = "block";
+}
+
 
 
 // Habitat
@@ -173,25 +135,6 @@ function showSlides2(n) {
 }
 
 
-
-var slideIndex3 = 1;
-showSlides3(slideIndex3);
-
-// Next/previous controls
-function plusSlides3(n) {
-  showSlides3(slideIndex3 += n);
-}
-
-function showSlides3(n) {
-  var i3;
-  var slides3 = document.getElementsByClassName("mySlides3");
-  if (n > slides3.length) {slideIndex3 = 1}
-  if (n < 1) {slideIndex3 = slides3.length}
-  for (i3 = 0; i3 < slides3.length; i3++) {
-    slides3[i3].style.display = "none";
-  }
-  slides3[slideIndex3-1].style.display = "block";
-}
 
 
 

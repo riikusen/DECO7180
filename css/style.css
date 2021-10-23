@@ -157,6 +157,33 @@ h2 {
   cursor: pointer;
 }
 
+.popup-title {
+  position:relative;
+  z-index: 800;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30%;
+
+  
+}
+
+.description {
+  position:relative;
+  z-index: 800;
+  margin-top: -70%;
+  margin-left: 70%;
+  max-width: 400px;
+  min-width: 300px;
+}
+
+.fish-img-detail {
+  position:relative;
+  z-index: 800;
+  margin-top: -25%;
+  margin-left: 10%;
+
+}
+
 
 
 .vertical {
