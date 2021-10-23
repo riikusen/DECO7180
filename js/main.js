@@ -20,40 +20,95 @@ function displayCards(n, namesArr, imgsArr) {
   }
 }
 
+// const imgSrcs = ["./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png"];
+var dimmer = document.getElementsByClassName("dimmer");
+var popup = document.getElementsByClassName("popup-card");
+  // const imgSrcs = ["./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png", "./fishdex_files/details-cards.png"];
+function showFunction(n) {
+  popup[n].style.display = "block";
+  dimmer[n].style.display = "block";
+}
 
-// function popupCards() {
-//   var n = 4; //testing
+function hideFunction(n) {
+  popup[n].style.display = "none";
+  dimmer[n].style.display = "none";
+}
+
+
+
+
+
+
+
+// function popupCards(n) {
 //   var i;
-//   var popupCardsCollection = document.getElementsByClassName("popup");
-//   const descriptions = ["d1", "d2", "d3", "d4"];
+//   var cardsCollection= document.getElementsByClassName("card");
+//   const names = ["Skippet Fish", "Skipett Fish", "Skipet Fish", "Skippet Fish"];
 //   const imgSrcs = ["./fishdex_files/back.png", "./fishdex_files/back.png", "./fishdex_files/fish.png", "./fishdex_files/fish.png"];
-//   if (n > popupCardsCollection.length ) {
-//     n = popupCardsCollection.length;
+
+//   if (n > cardsCollection.length) {
+//     n = cardsCollection.length;
 //   }
+
 //   for (i=0; i<n; i++) {
-//     var popup = document.getElementsByClassName("popup")[i];
-//     popup.classList.toggle("show");
+//     var dimmerButton = document.getElementsByClassName("clickable-text");
+//     var dimmer = document.getElementsByClassName("dimmer");
+//     var exit = document.getElementsByClassName("exit");
+//     var popup = document.getElementsByClassName("popup-card");
+//     function showFunction() {
+//       popup[i].style.display = "block";
+//       popup[i-1].style.display = "none";
+//       dimmer[i].style.display = "block";
+//       dimmer[i-1].style.display = "none";
+//     }
+//     function hideFunction() {
+//       popup[i].style.display = "none";
+//       dimmer[i].style.display = "none";
+//     }
+//     dimmerButton[i].onclick = function() {showFunction()};
+//     exit[i].onclick = function() {hideFunction()};
+
+
 //   }
 
 // }
 
 
-$(function() {
-  var dimmerButton = $('.clickable-text');
-  var dimmer = $('.dimmer');
-  var exit = $('.exit');
-  var popup = document.getElementsByClassName("popup")[0];
-  dimmerButton.on('click', function() {
-    // var popup = document.getElementsByClassName("popup")[0];
-    popup.classList.toggle("show");
-    dimmer.show();
-  });
-  exit.on('click', function() {
-    // var popup = document.getElementsByClassName("popup")[0];
-    popup.classList.toggle("hide");
-    dimmer.hide();
-  });
-});
+
+// $(function(n) {
+//   n=4;
+//   var i;
+//   var cardsCollection= document.getElementsByClassName("card");
+//   const names = ["Skippet Fish", "Skipett Fish", "Skipet Fish", "Skippet Fish"];
+//   const imgSrcs = ["./fishdex_files/back.png", "./fishdex_files/back.png", "./fishdex_files/fish.png", "./fishdex_files/fish.png"];
+
+//   if (n > cardsCollection.length) {
+//     n = cardsCollection.length;
+//   }
+  
+//   for (i=0; i<n; i++) {
+
+
+//   var dimmerButton = $('.clickable-text');
+//   var dimmer = $('.dimmer');
+//   var exit = $('.exit');
+//   var popup = $('.popup-card');
+//   // var popup = document.getElementsByClassName("popup")[0];
+//   dimmerButton[i].on('click', function() {
+//     // var popup = document.getElementsByClassName("popup")[0];
+//     popup[i].show();
+//     popup[i-1].hide();
+//     dimmer[i].show();
+//     dimmer[i-1].hide();
+//   });
+//   exit[i].on('click', function() {
+//     // var popup = document.getElementsByClassName("popup")[0];
+//     // popup.classList.toggle("hide");
+//     popup[i].hide();
+//     dimmer[i].hide();
+//   });
+// }
+// });
 
 
 // function myFunction() {
