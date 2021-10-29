@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish Game DEMO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="logo">
+        <a id="logo" href="https://deco7180teams-dugong.uqcloud.net"><img src="images/back.png" width="20%"></a>
+    </div>
+    <div class="game">
+        <canvas id="canvas1"></canvas>
+    </div>
+    
+    <div class="game-notice" id="game-notice">
+        <div class="game-notice-body">
+            Greetings, brave adventurers！
+            <br/>
+            <br/>
+            We need your help to explore the waters. Use the mouse to control the submarine to catch 10 fish, but watch out for dangerous torpedoes! You can view the information about the fish you catch after the game!
+Press space if you want to pause the game.
+
+        </div>
+        <button class="close-button" onclick="closeframe()">Start!</button>  
+    </div>
+
+    <div class="gameover1" id="gameover1">
+        <div class="gameover1-title">
+            GAME OVER!
+        </div>
+        <div class="gameover1-img">
+            <img src="images/explosion.png">
+        </div>
+        <div class="gameover1-body">
+            Oh no, you were hit by a water mine! Better luck next time!
+        </div>
+        <button class="gameover1-again" onclick="restart()">Try again</button>
+        <button class="gameover1-view" onclick="viewFish()">View fishes</button>  
+    </div>
+
+    <div class="gameover2" id="gameover2">
+        <div class="gameover2-title">
+            Mission Completed!
+        </div>
+        <div class="gameover2-img">
+            <img src="images/trophy.png">
+        </div>
+        <div class="gameover2-body">
+            Congraduations! You successfully completed the mission!
+        </div>
+        <button class="gameover2-again" onclick="restart()">Play again</button>
+        <button class="gameover2-view" onclick="viewFish()">View fishes</button>  
+    </div>
+
+    
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
