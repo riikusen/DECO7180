@@ -1,4 +1,6 @@
 ///////////////// API //////////////////////
+
+
 var recordType;
 var recordLevel;
 $(document).ready(function() {
@@ -14,7 +16,6 @@ $(document).ready(function() {
 		dataType: 'jsonp',
 		cache:true,
 		success: function(data) {
-
 			iterateRecords(data)
 		}
 	  });
@@ -59,32 +60,32 @@ function iterateRecords(data) {
 
 }
 console.log(nameArray);
+console.log(nameArray.length);
+
 
 //////////////////////// getting images ///////////////////
-animalsToSearchList = nameArray;
-
+// animalsToSearchList = nameArray;
+animalsToSearchList = ["Turkeyfish", "Lionfish", "Snapper", "Coris", "Unicornfish", "Batfish", "Surgeonfish", "Anemonefish", "Eel", "Idol", "Parrotfish", "Lungfish", "Tuna", "Bass", "Wrasse", "Lobster", "Smelt", "Triggerfish", "grayling", "Catfish", "Rockcod", "Seaperch", "Rainbowfish"]
 var fishListUncut = [];
 var imageURLs = [];
-var names = []
+var guids = [];
+var namess = []
 
-
+//generate the fish data from API
 function generateAnimal(fishName) {
-
     //  AJAX calls to reach the species detail page.
     $.ajax({
         async: false,
         url: "https://bie.ala.org.au/ws/search.json?q=" + fishName,
         success: function(result) {
             fishList = result.searchResults.results;
-
             for (var i = 0; i < fishList.length; i++) {
                 // Filter the results by only selected the species corresponding to the animal kingdom which have a name and an image
-                if (fishList[i].kingdom == "ANIMALIA" && fishList[i].name != "" && fishList[i].imageUrl != undefined) {
+                if (fishList[i].kingdom == "ANIMALIA" && fishList[i].commonNameSingle != "" && fishList[i].imageUrl != undefined && fishList[i].guid != null) {
                     fishListUncut.push(fishList[i]);
                     break;
                 }
             }
-          
         },
         error: function(err) {
             console.log("Nothing")
@@ -92,26 +93,63 @@ function generateAnimal(fishName) {
     });
 }
 
-
-
-for (var i = 0; i < animalsToSearchList.length; i++) {   
-    generateAnimal(animalsToSearchList[i]);
-    names.push(fishListUncut[fishListUncut.length-1].name);
-    imageURLs.push(fishListUncut[fishListUncut.length-1].imageUrl);
-    //generateCounter = generateCounter + 1;
+//get image name and guid from the data
+function getImageUrls(list){
+    var result = [];
+    for (var i = 0; i < list.length; i++) {   
+        generateAnimal(list[i]);
+        namess.push(fishListUncut[fishListUncut.length-1].commonNameSingle);
+        imageURLs.push(fishListUncut[fishListUncut.length-1].imageUrl);
+        var link = "<a href = https://bie.ala.org.au/species/" + fishListUncut[fishListUncut.length-1].guid + ">Click me to find out more!</a>"
+        guids.push(link);
+    }
+    result.push(namess)
+    result.push(imageURLs);
+    result.push(guids)
+    return result
 }
 
-console.log(imageURLs)
+
+var names = []
+var img = []
+var l = []
+//random pick n unrepeated elements from the lists
+function pickElements(list, n, list2, list3){
+  var result = []
+  var num = n;
+
+  for(var i = 0; i < num; i++){
+    var ranNum = Math.floor(Math.random()*(list.length - i));
+    if(result.includes(list[ranNum])){
+      continue;
+    }
+    names.push(list[ranNum]);
+    img.push(list2[ranNum]);
+    l.push(list3[ranNum]);
+    list[ranNum] = list[list.length - i - 1];
+    list2[ranNum] = list2[list2.length - i - 1];
+    list3[ranNum] = list3[list3.length - i - 1];
+  }
+  result.push(names);
+  result.push(img);
+  result.push(l);
+  console.log(result)
+  return result;
+}
+
+
+
+const fishToSearch = ["Whitetip reef shark", "Zebra shark", "Barcoo grunter", "Banded grunter",  "Penny fish", "Venus tuskfish", "Tripletail Maori wrasse", "Splitlevel hogfish", "Redbreasted Maori wrasse", "Humphead Maori wrasse", "Grass tuskfish", "Diana's hogfish", "Blue tuskfish", "Blackspot tuskfish", "Blackfin pigfish", "Anchor tuskfish", "Yellowfin parrotfish", "Steephead parrotfish", "Pacific longnose parrotfish", "Marbled parrotfish", "Ember parrotfish", "Daisy parrotfish", "Black-spot snapper", "Black-banded snapper", "Bigeye seaperch", "Black and white snapper", "White spotted guitarfish", "Weasel shark", "White shark", "Whitecheek shark", "Wobbegong", "Sliteye shark", "Smooth hammerhead shark", "Speartooth shark", "Spinner shark", "Spot-tail shark", "Tawny shark", "Thresher shark", "Tiger shark"]
+
+
 
 /////////////////information ////////////////////
 
 //tesing cards display, remove later 
-$( document ).ajaxComplete(function() {
-
-
-  var u = document.getElementsByClassName("card");
-  displayCards(4);
-});
+// $( document ).ajaxComplete(function() {
+//   var u = document.getElementsByClassName("card");
+//   displayCards(4);
+// });
 
 
 
@@ -120,21 +158,47 @@ $( document ).ajaxComplete(function() {
 function displayCards(n) {
   var index;
   var cardsCollection= document.getElementsByClassName("card");
+  var result = getImageUrls(animalsToSearchList)
+  var namesss = result[0];
+  var imgs = result[1];
+  var urls = result[2];
   //tesing delete later
-  const names = nameArray;
+  var names = [];
+  var imgSrcs = [];
+  var url = [];
+  //var imgSrcs = [];
+  if(namesss.length == 5){
+    names = namesss;
+    imgSrcs = imgs;
+    url = urls;
+  }else if(namesss.length > 5){
+    var result1 = pickElements(namesss, 5, imgs, urls);
+    names = result1[0];
+    imgSrcs = result1[1];
+    url = result1[2];
+  }else{
+    console.log("error: not enough fish to display")
+  }
+  console.log(names)
+  console.log(imgSrcs)
+  console.log(url)
+  
+  //imgSrcs = getImageUrls(names);
+  //getImageUrls(names);
+
   // const names = ["Skippet Fish", "Skipett Fish", "Skipet Fish", "Skippet Fish"];
-  const imgSrcs = ["./fishdex_files/back.png", "./fishdex_files/back.png", "./fishdex_files/fish.png", "./fishdex_files/fish.png"];
+  //const imgSrcs = ["./fishdex_files/back.png", "./fishdex_files/back.png", "./fishdex_files/fish.png", "./fishdex_files/fish.png"];
   if (n > cardsCollection.length) {
     n = cardsCollection.length;
   }
-  document.getElementById("text-under").innerHTML = names.length + " matches";
-
   for (index=0; index < n; index++) {
-    cardsCollection[index].style.display = "flex";
+    cardsCollection[index].style.display = "block";
     document.getElementsByClassName("fish-image")[index].src=imgSrcs[index];
     document.getElementsByClassName("fish-name")[index].innerHTML=names[index];
   }
 }
+
+displayCards(5);
 
 
 
@@ -143,13 +207,13 @@ function displayCards(n) {
 
 var dimmer = document.getElementsByClassName("dimmer");
 var popup = document.getElementsByClassName("popup-card");
-var imgOnPopup = document.getElementsByClassName("fish-img-detail");
-var description = document.getElementsByClassName("description");
-var nameOnPopup = document.getElementsByClassName("popup-title");
+var imgOnPopup = document.getElementsByClassName("fish-img-detail"); // fish img on popup 
+var description = document.getElementsByClassName("description");  // description on popup
+var nameOnPopup = document.getElementsByClassName("popup-title"); // fish name on popup
 
-//testing arrays, delete later 
+//testing arrays, delete later
 const imgSrcs = ["./fishdex_files/fish-mid.png", "./fishdex_files/fish-mid.png", "./fishdex_files/fish-mid.png", "./fishdex_files/fish-mid.png", "./fishdex_files/fish-mid.png"];
-// const nameArr = ["Skippet Fish", "Skipett Fish", "Skipet Fish", "Skippet Fish", "Skippet Fish"];
+const nameArr = ["Skippet Fish", "Skipett Fish", "Skipet Fish", "Skippet Fish", "Skippet Fish"];
 const desArr = ["a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin",
 "a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin", 
 "a dark bluish grey to greenish grey back silvery belly sometimes features dark bars on upper sides caudal fin is broad and slightly concave short front dorsal fin connected to higher soft second dorsal fin", 
@@ -176,75 +240,6 @@ function hideFunction(n) {
   description[n].style.display = "none";
   nameOnPopup[n].style.display = "none";
 }
-
-
-
-
-//////////////////////filter ////////////////////////
-// Colour
-var slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex-1].style.display = "block";
-}
-
-
-
-//size
-var slideIndex3 = 1;
-showSlides3(slideIndex3);
-
-// Next/previous controls
-function plusSlides3(n) {
-  showSlides3(slideIndex3 += n);
-}
-
-function showSlides3(n) {
-  var i3;
-  var slides3 = document.getElementsByClassName("mySlides3");
-  if (n > slides3.length) {slideIndex3 = 1}
-  if (n < 1) {slideIndex3 = slides3.length}
-  for (i3 = 0; i3 < slides3.length; i3++) {
-    slides3[i3].style.display = "none";
-  }
-  slides3[slideIndex3-1].style.display = "block";
-}
-
-
-
-// Habitat
-var slideIndex2 = 1;
-showSlides2(slideIndex2);
-
-// Next/previous controls
-function plusSlides2(n) {
-  showSlides2(slideIndex2 += n);
-}
-
-function showSlides2(n) {
-  var i2;
-  var slides2 = document.getElementsByClassName("mySlides2");
-  if (n > slides2.length) {slideIndex2 = 1}
-  if (n < 1) {slideIndex2 = slides2.length}
-  for (i2 = 0; i2 < slides2.length; i2++) {
-    slides2[i2].style.display = "none";
-  }
-  slides2[slideIndex2-1].style.display = "block";
-}
-
 
 
 
